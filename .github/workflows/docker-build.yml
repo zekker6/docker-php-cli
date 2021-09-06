@@ -13,7 +13,13 @@ jobs:
     permissions:
       contents: read
       packages: write
-
+    strategy:
+      matrix:
+        php:
+        - '7.2'
+        - '7.3'
+        - '7.4'
+        - '8.0'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -33,13 +39,6 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        strategy:
-          matrix:
-            php:
-              - '7.2'
-              - '7.3'
-              - '7.4'
-              - '8.0'
         with:
           context: .
           push: true
