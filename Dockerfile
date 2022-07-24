@@ -15,5 +15,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         --filename=composer \
         --install-dir=/usr/local/bin
 
+RUN sed 's/memory_limit = 128M/memory_limit = -1/'  /usr/local/etc/php/php.ini-development > /usr/local/etc/php/php.ini
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_MEMORY_LIMIT 0
