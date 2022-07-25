@@ -4,7 +4,7 @@ FROM php:$BASE_IMAGE
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libicu-dev libpq-dev libonig-dev libmcrypt-dev zlib1g-dev libzip-dev libmagickwand-dev libsodium-dev libpng-dev  \
-        openssh-client git zip unzip \
+        openssh-client git zip unzip jq \
     && rm -r /var/lib/apt/lists/*
 
 RUN pecl install imagick xdebug \
