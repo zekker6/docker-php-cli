@@ -7,8 +7,8 @@ RUN apt-get update \
         openssh-client git zip unzip jq \
     && rm -r /var/lib/apt/lists/*
 
-RUN pecl install imagick xdebug \
-    && docker-php-ext-enable imagick xdebug \
+RUN pecl install imagick xdebug redis \
+    && docker-php-ext-enable imagick xdebug redis \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && docker-php-ext-install intl mbstring pcntl pdo_mysql pdo_pgsql pgsql zip opcache bcmath sodium sockets gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
